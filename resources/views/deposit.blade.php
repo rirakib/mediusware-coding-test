@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+<h1>Deposit Amount</h1>
     <div class="container mt-5 mb-5">
         <form action="{{ route('deposit.store') }}" method="post">
             <div class="row">
@@ -26,7 +27,6 @@
                             <th>Sl</th>
                             <th>Amount</th>
                             <th>Date</th>
-                            <th>Action</th>
                         </thead>
                     <tbody>
                         @forelse ($deposits as $k=>$deposit)
@@ -34,11 +34,10 @@
                                 <td>{{$k+1}}</td>
                                 <td>{{$deposit->amount}}</td>
                                 <td>{{$deposit->date}}</td>
-                                <td><a href="">edit</a><a href="">delete</a></td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center">no deposit created yet</td>
+                                <td colspan="3" class="text-center">no deposit created yet</td>
                             </tr>
                         @endforelse
                     </tbody>

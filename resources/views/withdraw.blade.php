@@ -19,6 +19,36 @@
             </div>
         </form>
 
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="responsive-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>Sl</th>
+                            <th>Amount</th>
+                            <th>Fee</th>
+                            <th>Date</th>
+                        </thead>
+                    <tbody>
+                        @forelse ($withdraws as $k=>$withdraw)
+                            <tr>
+                                <td>{{$k+1}}</td>
+                                <td>{{$withdraw->amount}}</td>
+                                <td>{{$withdraw->fee}}</td>
+                                <td>{{$withdraw->date}}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3" class="text-center">no deposit created yet</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
 
     </div>
 @endsection

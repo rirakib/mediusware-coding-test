@@ -10,7 +10,11 @@ class WithdrawController extends Controller
 {
     public function index()
     {
-        return view('withdraw');
+        $withdraws = Transaction::whereTransactionType(Transaction::WITHDRAW)
+                     ->whereUserId(auth()->user()->id)
+                     ->latest()->get();
+
+        return view('withdraw',compact('withdraws'));
     }
 
     public function store(Request $request)
@@ -156,7 +160,7 @@ class WithdrawController extends Controller
                 }else{
 
                     $totalWithDrawAmount = Transaction::whereTransactionType(Transaction::WITHDRAW)
-                                           ->whereUserId(auth()->user()->id())->sum('amount');
+                                           ->whereUserId(auth()->user()->id)->sum('amount');
 
                     if($totalWithDrawAmount >= Transaction::AFTER_MAXIMUM_WITHDRAW_FEE_DECREASE)
                     {

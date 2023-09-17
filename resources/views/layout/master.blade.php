@@ -45,6 +45,17 @@
     <a href="{{route('dashboard')}}">Dashboard</a>
     <a href="{{route('deposit.index')}}">Deposit Balance</a>
     <a href="{{route('withdraw.index')}}">Withdraw Balance</a>
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+
+        <a href="{{route('logout')}}" class="mt-5"
+                onclick="event.preventDefault();
+                            this.closest('form').submit();">
+            {{ __('Log Out') }}
+        </a>
+    </form>
+
+
 </div>
 
 <div class="content">

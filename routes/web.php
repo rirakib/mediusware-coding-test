@@ -17,6 +17,7 @@ use App\Http\Controllers\WithdrawController;
 */
 
 Route::middleware('auth')->group(function(){
+    
     Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 
     //depoist
